@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.passwordmanager.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.passwordmanager.HelloController">
+    <children>
+        <TextField fx:id="nick" layoutX="216.0" layoutY="110.0" prefHeight="35.0" prefWidth="169.0" text="nick" />
+        <Label layoutX="188.0" layoutY="14.0" prefHeight="78.0" prefWidth="224.0" text="LOGOWANIE">
+            <font>
+                <Font size="38.0" />
+            </font>
+        </Label>
+        <Button fx:id="loadImageBtn" alignment="CENTER" layoutX="216.0" layoutY="157.0" mnemonicParsing="false" onAction="#onLoadImageBtnClick" prefHeight="43.0" prefWidth="169.0" text="Wczytaj odcisk palca" textAlignment="CENTER" />
+        <Button fx:id="logIn" layoutX="216.0" layoutY="321.0" mnemonicParsing="false" onAction="#onLogInBtnClick" prefHeight="35.0" prefWidth="169.0" text="ZALOGUJ" />
+        <RadioButton fx:id="medianFilter" layoutX="198.0" layoutY="252.0" mnemonicParsing="false" text="filtr medianowy">
+            <toggleGroup>
+                <ToggleGroup fx:id="option" />
+            </toggleGroup></RadioButton>
+        <RadioButton fx:id="kuwaharaFilter" layoutX="198.0" layoutY="281.0" mnemonicParsing="false" text="filtr Kuwahara" toggleGroup="$option" />
+        <RadioButton fx:id="mdbutmfFilter" layoutX="315.0" layoutY="252.0" mnemonicParsing="false" text="MDBUTMF" toggleGroup="$option" />
+        <RadioButton fx:id="medianmedianFilter" layoutX="315.0" layoutY="281.0" mnemonicParsing="false" text="mediana median" toggleGroup="$option" />
+        <Label layoutX="217.0" layoutY="200.0" prefHeight="51.0" prefWidth="169.0" text="Wybierz opcję">
+            <font>
+                <Font size="26.0" />
+            </font>
+        </Label>
+    </children>
+</Pane>
