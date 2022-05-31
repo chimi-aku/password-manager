@@ -1,16 +1,29 @@
 package com.example.passwordmanager;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
 
 public class HelloController {
+    public TextField nick;
+    public RadioButton global;
+    public ToggleGroup option;
+    public ToggleGroup option2;
+    public ToggleGroup option3;
+    public RadioButton otsu;
+    public RadioButton niblack;
+    public RadioButton sauvola;
+    public RadioButton phansalkar;
+    public RadioButton bernsen;
+    public RadioButton luwu;
+    public RadioButton kapura;
+    public RadioButton kmm;
+    public RadioButton k3m;
+    public RadioButton zhang;
+    public CheckBox crossing;
     @FXML private Button loadImageBtn;
     private BufferedImage originalImage;
     private ImageView originalImageView;
