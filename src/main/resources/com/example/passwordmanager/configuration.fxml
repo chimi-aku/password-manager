@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.passwordmanager.ConfigurationController">
+    <children>
+        <Label layoutX="163.0" layoutY="14.0" prefHeight="78.0" prefWidth="275.0" text="KONFIGURACJA" textAlignment="CENTER">
+            <font>
+                <Font size="38.0" />
+            </font>
+        </Label>
+        <RadioButton fx:id="medianFilter" layoutX="50.0" layoutY="144.0" mnemonicParsing="false" text="filtr medianowy">
+            <toggleGroup>
+                <ToggleGroup fx:id="opt1" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="kuwaharaFilter" layoutX="50.0" layoutY="173.0" mnemonicParsing="false" text="filtr Kuwahara" toggleGroup="$opt1" />
+        <RadioButton fx:id="mdbutmfFilter" layoutX="167.0" layoutY="144.0" mnemonicParsing="false" text="MDBUTMF" toggleGroup="$opt1" />
+        <RadioButton fx:id="medianmedianFilter" layoutX="167.0" layoutY="173.0" mnemonicParsing="false" text="mediana median" toggleGroup="$opt1" />
+        <Label layoutX="69.0" layoutY="92.0" prefHeight="50.0" prefWidth="169.0" text="Wybierz sposób wykrycia szumów" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <Label layoutX="363.0" layoutY="92.0" prefHeight="50.0" prefWidth="169.0" text="Wybierz sposób binaryzacji" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <RadioButton fx:id="global" layoutX="344.0" layoutY="136.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" text="progowanie globalne" wrapText="true">
+            <toggleGroup>
+                <ToggleGroup fx:id="opt2" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="otsu" layoutX="344.0" layoutY="177.0" mnemonicParsing="false" text="Otsu" toggleGroup="$opt2" />
+        <RadioButton fx:id="niblack" layoutX="344.0" layoutY="204.0" mnemonicParsing="false" text="Niblack" toggleGroup="$opt2" />
+        <RadioButton fx:id="sauvola" layoutX="441.0" layoutY="145.0" mnemonicParsing="false" text="Sauvola" toggleGroup="$opt2" />
+        <RadioButton fx:id="phansalkar" layoutX="443.0" layoutY="177.0" mnemonicParsing="false" text="Phansalkar" toggleGroup="$opt2" />
+        <RadioButton fx:id="bernsen" layoutX="344.0" layoutY="233.0" mnemonicParsing="false" text="Bernsen" toggleGroup="$opt2" />
+        <RadioButton fx:id="luwu" layoutX="446.0" layoutY="204.0" mnemonicParsing="false" text="LuWu" toggleGroup="$opt2" />
+        <RadioButton fx:id="kapura" layoutX="443.0" layoutY="233.0" mnemonicParsing="false" text="Kapura" toggleGroup="$opt2" />
+        <Label layoutX="73.0" layoutY="213.0" prefHeight="50.0" prefWidth="169.0" text="Wybierz sposób szkieletyzacji" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <RadioButton fx:id="kmm" layoutX="54.0" layoutY="263.0" mnemonicParsing="false" text="KMM">
+            <toggleGroup>
+                <ToggleGroup fx:id="opt3" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="k3m" layoutX="114.0" layoutY="263.0" mnemonicParsing="false" text="K3M" toggleGroup="$opt3" />
+        <RadioButton fx:id="zhang" layoutX="167.0" layoutY="263.0" mnemonicParsing="false" text="Zhang-Suen" toggleGroup="$opt3" />
+        <CheckBox fx:id="crossing1" layoutX="328.0" layoutY="272.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="193.0" text="Wykrywanie minucji za pomocą algorytmu Crossing Number" wrapText="true" />
+        <Button fx:id="logIn" layoutX="216.0" layoutY="324" mnemonicParsing="false" onAction="#onLogInBtnClick" prefHeight="35.0" prefWidth="169.0" text="ZALOGUJ" />
+    </children>
+</Pane>

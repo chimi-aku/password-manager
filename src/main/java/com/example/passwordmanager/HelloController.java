@@ -1,36 +1,23 @@
 package com.example.passwordmanager;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class HelloController {
-    public TextField nick;
-    public RadioButton global;
-    public ToggleGroup option;
-    public ToggleGroup option2;
-    public ToggleGroup option3;
-    public RadioButton otsu;
-    public RadioButton niblack;
-    public RadioButton sauvola;
-    public RadioButton phansalkar;
-    public RadioButton bernsen;
-    public RadioButton luwu;
-    public RadioButton kapura;
-    public RadioButton kmm;
-    public RadioButton k3m;
-    public RadioButton zhang;
-    public CheckBox crossing;
+
     @FXML private Button loadImageBtn;
     private BufferedImage originalImage;
-    private ImageView originalImageView;
-    @FXML private RadioButton medianFilter;
-    @FXML private RadioButton kuwaharaFilter;
-    @FXML private RadioButton mdbutmfFilter;
-    @FXML private RadioButton medianmedianFilter;
+    @FXML private ImageView originalImageView;
 
     @FXML protected void onLoadImageBtnClick()
     {
@@ -39,20 +26,14 @@ public class HelloController {
         originalImageView.setImage(FileHandler.convertToFxImage(originalImage));
     }
 
-    @FXML protected void onLogInBtnClick()
-    {
-        if(medianFilter.isSelected()){
-
-        }
-        if(kuwaharaFilter.isSelected()){
-
-        }
-        if(mdbutmfFilter.isSelected()){
-
-        }
-        if(medianmedianFilter.isSelected()){
-
-        }
-
+    @FXML protected void onNextBtnClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("configuration.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setTitle("KONFIGURACJA");
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
 }
