@@ -12,7 +12,7 @@ public class K3M {
             {0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,1,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,0,1,1,0,1,1,0,1,0}};
     private static final int[] A1pix = {0,0,0,1,0,0,1,1,0,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,1,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,1,1,1,0,1,1,1,1,0};
 
-    public static int[][] k3m(int[][] imgArray){
+    public static int[][] thinImage(int[][] imgArray){
 
         int width = imgArray[1].length;
         int height = imgArray.length;
@@ -71,41 +71,7 @@ public class K3M {
         return imageWidened;
     }
 
-    public static int[][] convertBinarizatedImgToArray2D(BufferedImage imgSrc) {
 
-        int width = imgSrc.getWidth();
-        int height = imgSrc.getHeight();
-        int[][] imgArray = new int[width][height];
-
-        for (int row = 0; row < width; row++) {
-            for (int col = 0; col < height; col++) {
-                imgArray[row][col] = imgSrc.getRGB(row, col) != -1 ? 1 : 0;
-            }
-        }
-
-        return imgArray;
-    }
-
-    public static BufferedImage convertArraytoBinarizatedImg(int[][] imgArray){
-
-        int width = imgArray[1].length;
-        int height = imgArray.length;
-
-        BufferedImage image = new BufferedImage(height - 2, width - 2, BufferedImage.TYPE_INT_RGB);
-
-        for(int i = 1; i < height - 1; i++){
-            for(int j = 1; j < width - 1; j++){
-
-                if(imgArray[i][j] == 1) {
-                    image.setRGB(i - 1, j - 1, 0);
-                }
-                else {
-                    image.setRGB(i - 1, j - 1, 0xffffff);
-                }
-            }
-        }
-        return image;
-    }
     private static int getWeight(int[][] imageWidened, int i, int j) {
         int weight;
         weight = imageWidened[i - 1][j] +
