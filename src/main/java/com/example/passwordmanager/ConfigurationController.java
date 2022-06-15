@@ -1,13 +1,19 @@
 package com.example.passwordmanager;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class ConfigurationController {
 
@@ -35,7 +41,7 @@ public class ConfigurationController {
     public CheckBox crossing1;
 
     @FXML
-    public void onLogInButtonClick(MouseEvent mouseEvent) {
+    public void onLogInButtonClick(MouseEvent mouseEvent) throws IOException {
         if(medianFilter.isSelected())
         {
 
@@ -103,5 +109,14 @@ public class ConfigurationController {
         {
 
         }
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manager.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setTitle("Twoje hasła");
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
 }

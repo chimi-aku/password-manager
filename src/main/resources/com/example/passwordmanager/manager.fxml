@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.passwordmanager.ManagerController" prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <ScrollPane fx:id="list" layoutX="84.0" layoutY="92.0" prefHeight="267.0" prefWidth="435.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+            </content>
+        </ScrollPane>
+        <Button fx:id="add" layoutX="173.0" layoutY="32.0" mnemonicParsing="false" onAction="#AddBtn" text="Dodaj" />
+        <Button fx:id="delete" layoutX="274.0" layoutY="32.0" mnemonicParsing="false" onAction="#DeleteBtn" text="Usuń" />
+        <Button fx:id="edit" layoutX="370.0" layoutY="32.0" mnemonicParsing="false" onAction="#EditBtn" text="Modyfikuj" />
+    </children>
+</Pane>
+
+
