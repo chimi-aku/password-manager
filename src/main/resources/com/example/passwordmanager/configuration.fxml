@@ -58,6 +58,6 @@
         <RadioButton fx:id="k3m" layoutX="114.0" layoutY="263.0" mnemonicParsing="false" text="K3M" toggleGroup="$opt3" />
         <RadioButton fx:id="zhang" layoutX="167.0" layoutY="263.0" mnemonicParsing="false" text="Zhang-Suen" toggleGroup="$opt3" />
         <CheckBox fx:id="crossing1" layoutX="328.0" layoutY="272.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="193.0" text="Wykrywanie minucji za pomocą algorytmu Crossing Number" wrapText="true" />
-        <Button fx:id="logIn" layoutX="216.0" layoutY="324" mnemonicParsing="false" onAction="#onLogInBtnClick" prefHeight="35.0" prefWidth="169.0" text="ZALOGUJ" />
+        <Button fx:id="logIn" layoutX="216.0" layoutY="324" mnemonicParsing="false" onMouseClicked="#onLogInButtonClick" prefHeight="35.0" prefWidth="169.0" text="ZALOGUJ" />
     </children>
 </Pane>

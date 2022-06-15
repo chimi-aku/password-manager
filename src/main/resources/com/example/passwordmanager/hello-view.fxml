@@ -15,7 +15,7 @@
                 <Font size="38.0" />
             </font>
         </Label>
-        <Button fx:id="loadImageBtn" alignment="CENTER" layoutX="216.0" layoutY="157.0" mnemonicParsing="false" onAction="#onLoadImageBtnClick" prefHeight="43.0" prefWidth="169.0" text="Wczytaj odcisk palca" textAlignment="CENTER" />
+        <Button fx:id="loadImageBtn" alignment="CENTER" layoutX="216.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#onClickImageBtnClick" onAction="#onLoadImageBtnClick" prefHeight="43.0" prefWidth="169.0" text="Wczytaj odcisk palca" textAlignment="CENTER" />
 
         <Button fx:id="next" layoutX="216.0" layoutY="513.0" mnemonicParsing="false" onAction="#onNextBtnClick" prefHeight="35.0" prefWidth="169.0" text="DALEJ" />
         <ImageView fx:id="originalImageView" fitHeight="273.0" fitWidth="297.0" layoutX="152.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true" />

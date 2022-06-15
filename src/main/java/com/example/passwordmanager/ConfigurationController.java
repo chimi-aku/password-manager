@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -24,7 +25,6 @@ public class ConfigurationController {
     public RadioButton kmm;
     public RadioButton k3m;
     public RadioButton zhang;
-    public CheckBox crossing;
     public RadioButton medianFilter;
     public RadioButton kuwaharaFilter;
     public RadioButton mdbutmfFilter;
@@ -35,8 +35,73 @@ public class ConfigurationController {
     public CheckBox crossing1;
 
     @FXML
-    protected void onLogInBtnClick()
-    {
+    public void onLogInButtonClick(MouseEvent mouseEvent) {
+        if(medianFilter.isSelected())
+        {
 
+        }
+        else if(kuwaharaFilter.isSelected())
+        {
+
+        }
+        else if(mdbutmfFilter.isSelected())
+        {
+
+        }
+        else
+        {
+
+        }
+
+        if(kmm.isSelected())
+        {
+
+        }
+        else if(k3m.isSelected())
+        {
+
+        }
+        else
+        {
+
+        }
+
+        if(global.isSelected())
+        {
+
+        }
+        else if(otsu.isSelected())
+        {
+
+        }
+        else if(niblack.isSelected())
+        {
+
+        }
+        else if(bernsen.isSelected())
+        {
+
+        }
+        else if(sauvola.isSelected())
+        {
+
+        }
+        else if(phansalkar.isSelected())
+        {
+
+        }
+        else if(luwu.isSelected())
+        {
+
+        }
+        else
+        {
+
+        }
+
+        if(crossing1.isSelected())
+        {
+
+        }
     }
 }
