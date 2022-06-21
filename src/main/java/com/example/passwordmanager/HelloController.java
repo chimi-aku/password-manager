@@ -23,7 +23,7 @@ public class HelloController {
 
     public TextField nick;
     @FXML private Button loadImageBtn;
-    private BufferedImage originalImage;
+    public static BufferedImage originalImage;
     @FXML private ImageView originalImageView;
     private File selectedFile;
 

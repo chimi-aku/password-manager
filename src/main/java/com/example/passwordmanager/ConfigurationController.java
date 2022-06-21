@@ -1,5 +1,10 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.binarization.*;
+import com.example.passwordmanager.noise.MedianFilter;
+import com.example.passwordmanager.HelloController;
+import com.example.passwordmanager.skeletonization.K3M;
+import com.example.passwordmanager.skeletonization.ZhangSuen;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +18,10 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+
+import static com.example.passwordmanager.HelloController.originalImage;
 
 public class ConfigurationController {
 
@@ -42,67 +50,56 @@ public class ConfigurationController {
 
     @FXML
     public void onLogInButtonClick(MouseEvent mouseEvent) throws IOException {
-        if(medianFilter.isSelected())
-        {
+        BufferedImage after_noise;
+        BufferedImage after_binarization = null;
+        int[][] after_binarization_array;
+        int[][] after_skeletonization;
+        BufferedImage after_crossing;
 
-        }
-        else if(kuwaharaFilter.isSelected())
-        {
-
-        }
-        else if(mdbutmfFilter.isSelected())
-        {
-
-        }
-        else
-        {
-
-        }
-
-        if(kmm.isSelected())
-        {
-
-        }
-        else if(k3m.isSelected())
-        {
-
-        }
-        else
-        {
-
-        }
+        after_noise = MedianFilter.median(originalImage, 3);
 
         if(global.isSelected())
         {
-
+            after_binarization = GlobalThresholding.simpleBinarization(after_noise, 3);
         }
-        else if(otsu.isSelected())
+       /* else if(otsu.isSelected())
         {
 
-        }
+        }*/
         else if(niblack.isSelected())
         {
-
+            after_binarization = Niblack.NiblackBinarization(after_noise, 3, 4);
         }
-        else if(bernsen.isSelected())
+        /*else if(bernsen.isSelected())
         {
 
-        }
+        }*/
         else if(sauvola.isSelected())
         {
-
+            after_binarization = Sauvola.SauvolaBinarization(after_noise, 3, 4);
         }
         else if(phansalkar.isSelected())
         {
-
+            after_binarization = Phansalkar.PhansalkarBinarization(after_noise, 3, 4);
         }
-        else if(luwu.isSelected())
+        /*else if(luwu.isSelected())
         {
 
         }
         else
         {
 
+        }*/
+
+        if(k3m.isSelected())
+        {
+            after_binarization_array = Helpers.convertBinarizatedImgToArray2D(after_binarization);
+            after_skeletonization = K3M.thinImage(after_binarization_array);
+        }
+        else
+        {
+            after_binarization_array = Helpers.convertBinarizatedImgToArray2D(after_binarization);
+            after_skeletonization = ZhangSuen.thinImage(after_binarization_array);
         }
 
         if(crossing1.isSelected())
