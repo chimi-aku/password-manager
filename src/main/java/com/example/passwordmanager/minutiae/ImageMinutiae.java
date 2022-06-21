@@ -1,5 +1,11 @@
 package com.example.passwordmanager.minutiae;
 
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class ImageMinutiae {
 
     private int[][] CNArray;
