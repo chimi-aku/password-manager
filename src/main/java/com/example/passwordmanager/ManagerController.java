@@ -122,6 +122,9 @@ public class ManagerController {
         PrepTable();
     }
 
+    public void SaveBtn(ActionEvent actionEvent) {
+    }
+
     private static class Results {
         String url;
         String pass;
