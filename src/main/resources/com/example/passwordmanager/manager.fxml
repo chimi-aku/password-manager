@@ -18,7 +18,7 @@
                     <Button fx:id="edit" mnemonicParsing="false" onAction="#EditBtn" text="Modyfikuj" />
                     <Button fx:id="delete" mnemonicParsing="false" onAction="#DeleteBtn" text="Usuń" />
                     <Button fx:id="add" mnemonicParsing="false" onAction="#AddBtn" text="Dodaj" />
-                  <Button fx:id="saveToFile" mnemonicParsing="false" text="Zapisz do pliku" />
+                  <Button fx:id="saveToFile" mnemonicParsing="false" onAction="#SaveBtn" text="Zapisz do pliku" />
                </children>
             </HBox>
             <TableView fx:id="list" editable="true" prefHeight="303.0" prefWidth="499.0">
