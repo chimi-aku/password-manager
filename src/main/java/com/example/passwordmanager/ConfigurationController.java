@@ -69,7 +69,7 @@ public class ConfigurationController {
         int[][] after_skeletonization;
         BufferedImage after_crossing;
 
-        after_noise = MedianFilter.median(originalImage, 3);
+        after_noise = originalImage;
 
         if(global.isSelected())
         {
@@ -119,6 +119,9 @@ public class ConfigurationController {
         {
 
         }
+
+        minution = new int[5];
+
         try(var conn = DManager.connect()){
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(
@@ -128,18 +131,33 @@ public class ConfigurationController {
             rs.next();
             rs.getInt(1);//id
             rs.getString(2);//login
+
+            minution[0] = Integer.parseInt(rs.getString(3));
+            minution[1] = Integer.parseInt(rs.getString(4));
+            minution[2] = Integer.parseInt(rs.getString(5));
+            minution[3] = Integer.parseInt(rs.getString(6));
+            minution[4] = Integer.parseInt(rs.getString(7));
         }
         catch (SQLException ignored) {}
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manager.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.DECORATED);
-        stage.setTitle("Twoje hasła");
-        stage.setScene(new Scene(root1));
-        ManagerController controller = fxmlLoader.getController();
-        controller.initData2(id, minution);
-        stage.show();
+        ImageMinutiae original = new ImageMinutiae(new int[100][100], minution);
+        ImageMinutiae provided = MinutiaeExtraction.calculateAllCN(after_skeletonization);
+
+        String compareRes = MinutiaeExtraction.compare(original, provided);
+
+        if(compareRes.equals("TRUE")) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manager.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.DECORATED);
+            stage.setTitle("Twoje hasła");
+            stage.setScene(new Scene(root1));
+            ManagerController controller = fxmlLoader.getController();
+            controller.initData2(id, minution);
+            stage.show();
+        }
+
+
     }
 }
