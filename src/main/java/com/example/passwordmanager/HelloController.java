@@ -17,6 +17,10 @@ import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Objects;
 
 public class HelloController {
@@ -35,8 +39,14 @@ public class HelloController {
     }
 
     @FXML
-    protected void onNextBtnClick() throws IOException {
-        if(Objects.equals(nick.getText(), "admin") && originalImage!=null){
+    protected void onNextBtnClick() throws IOException, SQLException {
+        DManager dmanager = new DManager();
+        Connection conn = dmanager.connect();
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery("select * from public.\"Users\" where public.\"Users\".\"Login\" = '" + nick.getText()+"'");
+        conn.close();
+
+        if(rs.next() && originalImage!=null){
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("configuration.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -44,6 +54,9 @@ public class HelloController {
             stage.initStyle(StageStyle.DECORATED);
             stage.setTitle("KONFIGURACJA");
             stage.setScene(new Scene(root1));
+
+            ConfigurationController controller = fxmlLoader.getController();
+            controller.initData(rs.getInt(1));
             stage.show();
         }
         else

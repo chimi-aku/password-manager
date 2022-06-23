@@ -20,10 +20,15 @@ import javafx.stage.StageStyle;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Arrays;
 
 import static com.example.passwordmanager.HelloController.originalImage;
 
 public class ConfigurationController {
+    private int id;
+    void initData(int id) {
+        this.id = id;
+    }
 
     public RadioButton global;
     public ToggleGroup option;
@@ -114,6 +119,8 @@ public class ConfigurationController {
         stage.initStyle(StageStyle.DECORATED);
         stage.setTitle("Twoje hasła");
         stage.setScene(new Scene(root1));
+        ManagerController controller = fxmlLoader.getController();
+        controller.initData2(id);
         stage.show();
     }
 }
