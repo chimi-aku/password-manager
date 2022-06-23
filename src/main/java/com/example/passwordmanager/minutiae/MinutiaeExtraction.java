@@ -52,7 +52,7 @@ public class MinutiaeExtraction {
         if(original.getNumbersOfCN()[3] == in.getNumbersOfCN()[3] && original.getNumbersOfCN()[4] == in.getNumbersOfCN()[4])
             return "EXACT";
 
-        if(Math.abs(original.getNumbersOfCN()[3] - in.getNumbersOfCN()[3]) < 120 || Math.abs(original.getNumbersOfCN()[4] - in.getNumbersOfCN()[4]) < 20)
+        if(Math.abs(original.getNumbersOfCN()[3] - in.getNumbersOfCN()[3]) < 120 || Math.abs(original.getNumbersOfCN()[4] - in.getNumbersOfCN()[4]) < 30)
             return "TRUE";
 
         return "FALSE";
