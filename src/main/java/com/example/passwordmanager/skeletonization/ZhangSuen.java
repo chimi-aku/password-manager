@@ -20,7 +20,7 @@ public class ZhangSuen {
     static int[][] grid;
 
 
-    static int [][] thinImage(int [][] imgArray) {
+    public static int [][] thinImage(int [][] imgArray) {
         boolean firstStep = false;
         boolean hasChanged;
 
