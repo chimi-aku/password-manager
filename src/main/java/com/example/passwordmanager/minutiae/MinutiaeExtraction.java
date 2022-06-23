@@ -45,13 +45,17 @@ public class MinutiaeExtraction {
 
     }
 
-    public static boolean compare(ImageMinutiae original, ImageMinutiae in) {
+    public static String compare(ImageMinutiae original, ImageMinutiae in) {
 
-        boolean res = false;
+        String res = "";
+
+        if(original.getNumbersOfCN()[3] == in.getNumbersOfCN()[3] && original.getNumbersOfCN()[4] == in.getNumbersOfCN()[4])
+            return "EXACT";
+
         if(Math.abs(original.getNumbersOfCN()[3] - in.getNumbersOfCN()[3]) < 120 || Math.abs(original.getNumbersOfCN()[4] - in.getNumbersOfCN()[4]) < 20)
-            return true;
+            return "TRUE";
 
-        return false;
+        return "FALSE";
 
     }
 
