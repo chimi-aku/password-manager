@@ -15,14 +15,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ManagerController {
     public TableColumn<String[],String> url;
     public TableColumn<String[],String> pass;
     public Button saveToFile;
     private int id;
-    void initData2(int id) {
+    private int[] minution;
+    void initData2(int id, int[] minution) {
         this.id = id;
+        this.minution = minution;
     }
     @FXML
     private TableView<String[]> list;
@@ -46,6 +49,8 @@ public class ManagerController {
             List<String[]> allRows = new ArrayList<>();
 
             while(rs.next()){
+                rs.getString(1);
+
                 String[] row = new String[2];
                 for(int i = 1;i<=2;i++){
                     row[i-1]=rs.getString(i);
@@ -82,18 +87,23 @@ public class ManagerController {
             }
             return null;
         });
+        Optional<Results> optionalResult = dialog.showAndWait();
+        optionalResult.ifPresent((Results results) -> {
+            new Thread(() -> {
+                try(var conn = DManager.connect()){
+                    Statement statement = conn.createStatement();
+                    statement.executeUpdate("insert into public.\"ListOfPasswords\"('Link','Pass','IdUser') values("+results.url+","+results.pass+","+id+")");
+                } catch (SQLException e) {
+                    System.out.println(e);
+                }
+
+            }).start();
+
+            list.getItems().add(list.getItems().size(),new String[]{results.url,results.pass});
+            list.refresh();
+        });
 
 
-        new Thread(() -> {
-            try(var conn = DManager.connect()){
-                Statement statement = conn.createStatement();
-                statement.executeUpdate("insert into public.\"ListOfPasswords\"(Link,Pass,IdUser) values()");
-            } catch (SQLException ignored) {}
-
-        }).start();
-
-        list.getItems().add(list.getItems().size(),new String[]{"xd","hehe"});
-        list.refresh();
     }
 
     public void DeleteBtn(ActionEvent actionEvent) {

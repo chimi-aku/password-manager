@@ -1,6 +1,8 @@
 package com.example.passwordmanager;
 
 import com.example.passwordmanager.binarization.*;
+import com.example.passwordmanager.minutiae.ImageMinutiae;
+import com.example.passwordmanager.minutiae.MinutiaeExtraction;
 import com.example.passwordmanager.noise.MedianFilter;
 import com.example.passwordmanager.HelloController;
 import com.example.passwordmanager.skeletonization.K3M;
@@ -20,12 +22,18 @@ import javafx.stage.StageStyle;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static com.example.passwordmanager.HelloController.originalImage;
 
 public class ConfigurationController {
     private int id;
+    private int[] minution;
     void initData(int id) {
         this.id = id;
     }
@@ -111,6 +119,17 @@ public class ConfigurationController {
         {
 
         }
+        try(var conn = DManager.connect()){
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(
+                    "select *"+
+                            "from public.\"Users\" " +
+                            "where public.\"Users\".\"Id\" ="+id);
+            rs.next();
+            rs.getInt(1);//id
+            rs.getString(2);//login
+        }
+        catch (SQLException ignored) {}
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manager.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
@@ -120,7 +139,7 @@ public class ConfigurationController {
         stage.setTitle("Twoje hasła");
         stage.setScene(new Scene(root1));
         ManagerController controller = fxmlLoader.getController();
-        controller.initData2(id);
+        controller.initData2(id, minution);
         stage.show();
     }
 }

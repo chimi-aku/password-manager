@@ -40,8 +40,7 @@ public class HelloController {
 
     @FXML
     protected void onNextBtnClick() throws IOException, SQLException {
-        DManager dmanager = new DManager();
-        Connection conn = dmanager.connect();
+        Connection conn = DManager.connect();
         Statement statement = conn.createStatement();
         ResultSet rs = statement.executeQuery("select * from public.\"Users\" where public.\"Users\".\"Login\" = '" + nick.getText()+"'");
         conn.close();
